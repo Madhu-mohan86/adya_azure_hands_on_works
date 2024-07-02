@@ -15,7 +15,7 @@ resource "azurerm_virtual_machine" "vm_01" {
     create_option = "FromImage"
     managed_disk_type = "Standard_LRS"
   }
-  network_interface_ids = [ azurerm_network_interface.vm01_n[each.key].id ]
+  network_interface_ids = var.private_or_public ? [ azurerm_network_interface.vm01_n_private[each.key].id ] : [ azurerm_network_interface.vm01_n_public[each.key].id ]
   storage_image_reference {
     publisher = "Canonical"
     offer = "0001-com-ubuntu-server-jammy"
@@ -48,11 +48,25 @@ resource "azurerm_subnet" "vm01_subnet" {
   address_prefixes = [each.value]
 }
 
-resource "azurerm_network_interface" "vm01_n" {
+
+
+resource "azurerm_network_interface" "vm01_n_private" {
   for_each = var.vm_name
   resource_group_name = var.resource_group
   location = var.location
-  name = "${each.value}_networkinterface"
+  name = "${each.value}_private_networkinterface"
+  ip_configuration {
+    name = "ipconfig"
+    subnet_id = azurerm_subnet.vm01_subnet[each.key].id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+
+resource "azurerm_network_interface" "vm01_n_public" {
+  for_each = var.vm_name
+  resource_group_name = var.resource_group
+  location = var.location
+  name = "${each.value}_public_networkinterface"
   ip_configuration {
     name = "ipconfig"
     subnet_id = azurerm_subnet.vm01_subnet[each.key].id
@@ -110,6 +124,6 @@ resource "azurerm_network_security_rule" "ssh" {
 
 resource "azurerm_network_interface_security_group_association" "nsg_asste" {
   for_each = toset(var.vm_name_and_address["vm_name"])
-  network_interface_id = azurerm_network_interface.vm01_n[each.key].id
+  network_interface_id = var.private_or_public ? azurerm_network_interface.vm01_n_private[each.key].id : azurerm_network_interface.vm01_n_public[each.key].id
   network_security_group_id = azurerm_network_security_group.nsg_def[each.key].id
 }

@@ -15,6 +15,9 @@ variable "vm_name" {
   default = ["vmbytf01"]
 }
 
+variable "private_or_public" {
+  type = bool
+}
 
 variable "vm_name_and_address"{
   type = map(list(string))
