@@ -7,7 +7,7 @@
 
 data "azurerm_virtual_network" "vnet_list" {
   resource_group_name = var.resource_group
-  name = "intro-vnet"
+  name = "intro_vnet"
 }
 
 # locals{

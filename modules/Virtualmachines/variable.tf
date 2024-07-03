@@ -1,5 +1,5 @@
 variable "resource_group" {
-    default = "intro_group"
+    default = "sirius"
 }
 
 variable "location" {
@@ -12,7 +12,7 @@ variable "vm_size" {
 
 variable "vm_name" {
   type = set(string)
-  default = ["vmbytf01"]
+  default = ["vmbytf01" , "vmbytf02"]
 }
 
 variable "private_or_public" {
@@ -22,7 +22,7 @@ variable "private_or_public" {
 variable "vm_name_and_address"{
   type = map(list(string))
   default = {
-    "vm_name" = [ "vmbytf01" ]
-    "vm_address_prefixes" = ["10.0.1.0/25"]
+    "vm_name" = [ "vmbytf01" , "vmbytf02" ]
+    "vm_address_prefixes" = ["10.0.0.0/26" , "10.0.0.64/26"]
   }
 }

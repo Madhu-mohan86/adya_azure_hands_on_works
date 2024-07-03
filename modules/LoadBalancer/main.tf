@@ -14,7 +14,11 @@ resource "azurerm_lb_backend_address_pool" "create_backend_pool" {
    virtual_network_id = var.vn_id
 }
 
-
+# resource "azurerm_network_interface_backend_address_pool_association" "associate_backend" {
+#   backend_address_pool_id = azurerm_lb_backend_address_pool.create_backend_pool.id
+#   ip_configuration_name = "ipconfig"
+#   network_interface_id = var.nic_id
+# }
 
 resource "azurerm_public_ip" "lb_pubip" {
   name = "lb_pubip"
