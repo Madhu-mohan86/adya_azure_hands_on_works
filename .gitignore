@@ -3,3 +3,9 @@
 terraform.tfstate
 terraform.tfstate.backup
 
+# Ignore .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Ignore tfstate backups
+*.backup.tfstate

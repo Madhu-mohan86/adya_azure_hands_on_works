@@ -4,7 +4,9 @@ resource "azurerm_lb" "create_load_balancer" {
   location = var.location
   frontend_ip_configuration {
     name = "for_test"
-    public_ip_address_id = azurerm_public_ip.lb_pubip.id
+    subnet_id = var.subnet_id
+    public_ip_address_id = var.private_lb_or_public_lb ? null : azurerm_public_ip.lb_pubip.id
+    private_ip_address_allocation = var.private_lb_or_public_lb ? "Dynamic" : null
   }
 }
 
