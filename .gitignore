@@ -1,3 +1,5 @@
 # Ignore folders starting with a dot
 .*/
+terraform.tfstate
+terraform.tfstate.backup
 
