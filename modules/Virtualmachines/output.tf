@@ -13,3 +13,8 @@ output "vn_id" {
 output "nic_id" {
   value = values(azurerm_network_interface.vm01_n_private)[*].id
 }
+
+
+output "vm_id" {
+  value = [for vm in azurerm_virtual_machine.vm_01 : vm.id]
+}
