@@ -36,3 +36,21 @@ resource "azurerm_storage_blob" "example" {
   content_type           = "text/html"
   source                 = var.path
 }
+
+
+# data "azurerm_storage_account_sas" "generate_token" {
+#   resource_types {
+#     service = false
+#     container = true
+#     object = false
+#   }
+#   connection_string = azurerm_storage_account.storage_account.primary_connection_string
+#   permissions {
+#     read = true
+#     list = true
+#     add = false
+#     tag = false
+#     start = false
+#     expiry
+#   }
+# }

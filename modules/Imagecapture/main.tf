@@ -8,3 +8,4 @@ resource "azurerm_image" "name" {
     os_type = "Linux"
   }
 }
+

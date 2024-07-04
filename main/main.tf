@@ -4,13 +4,28 @@ module "vm" {
 }
 
 module "load_balancer" {
-  source = "../modules/LoadBalancer/"
+  source = "../modules/LoadBalancer"
   rg = module.vm.rg
   location = module.vm.location
   vn_id = module.vm.vn_id
-  # nic_id = module.vm.nic_id[0]
+  private_lb_or_public_lb = true
+  subnet_id = module.vm.subnet_id[0]
 }
 
 module "traffic_manager" {
   source = "../modules/TrafficManager"
+}
+
+module "disks" {
+  source = "../modules/Disks"
+  resource_group = module.vm.rg
+  location = module.vm.location
+  az_vmid = module.vm.vm_id[1]
+}
+
+module "backup" {
+  source = "../modules/Backup"
+  rg = module.vm.rg
+  location = module.vm.location
+  vm_id = module.vm.vm_id[1]
 }

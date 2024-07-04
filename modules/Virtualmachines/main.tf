@@ -71,20 +71,20 @@ resource "azurerm_network_interface" "vm01_n_public" {
     name = "ipconfig"
     subnet_id = azurerm_subnet.vm01_subnet[each.key].id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id = azurerm_public_ip.vm01_pubip[each.key].id
+    # public_ip_address_id = azurerm_public_ip.vm01_pubip[each.key].id
   }
 }
 
-resource "azurerm_public_ip" "vm01_pubip" {
-  for_each = var.vm_name
-  name = "${each.value}_pubip"
-  resource_group_name = var.resource_group
-  location = var.location
-  allocation_method = "Dynamic"
-  lifecycle {
-    create_before_destroy = true
-  }
-}
+# resource "azurerm_public_ip" "vm01_pubip" {
+#   for_each = var.vm_name
+#   name = "${each.value}_pubip"
+#   resource_group_name = var.resource_group
+#   location = var.location
+#   allocation_method = "Dynamic"
+#   lifecycle {
+#     create_before_destroy = true
+#   }
+# }
 
 resource "azurerm_network_security_group" "nsg_def" {
   for_each = var.vm_name
