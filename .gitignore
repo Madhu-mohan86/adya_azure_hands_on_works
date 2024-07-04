@@ -1,4 +1,9 @@
 # Ignore folders starting with a dot
 .*/
-.tfstate
 
+# Ignore .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Ignore tfstate backups
+*.backup.tfstate
