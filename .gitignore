@@ -1,4 +1,4 @@
 # Ignore folders starting with a dot
 .*/
-
+.tfstate
 
