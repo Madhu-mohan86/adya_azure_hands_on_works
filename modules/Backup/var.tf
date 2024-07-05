@@ -22,5 +22,9 @@ variable "backup_policy" {
 }
 
 variable "vm_id" {
+
+}
+
+variable "disk_id" {
   type = string
 }

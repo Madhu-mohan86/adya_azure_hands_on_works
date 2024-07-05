@@ -7,10 +7,10 @@ resource "azurerm_managed_disk" "create_disk" {
   disk_size_gb = 30
 }
 
-resource "azurerm_virtual_machine_data_disk_attachment" "name" {
-  managed_disk_id = azurerm_managed_disk.create_disk.id
-  virtual_machine_id = var.az_vmid
-  caching = "ReadWrite"
-  lun = "10"
-}
+# resource "azurerm_virtual_machine_data_disk_attachment" "name" {
+#   managed_disk_id = azurerm_managed_disk.create_disk.id
+#   virtual_machine_id = var.az_vmid
+#   caching = "ReadWrite"
+#   lun = "10"
+# }
 

@@ -17,28 +17,28 @@ module "traffic_manager" {
   source = "../modules/TrafficManager"
 }
 
-# <<<<<<< main
-# module "disks" {
-#   source = "../modules/Disks"
-#   resource_group = module.vm.rg
-#   location = module.vm.location
-#   az_vmid = module.vm.vm_id[1]
-# }
+module "disks" {
+  source = "../modules/Disks"
+  resource_group = module.vm.rg
+  location = module.vm.location
+  az_vmid = module.vm.vm_id[1]
+}
 
-# module "backup" {
-#   source = "../modules/Backup"
-#   rg = module.vm.rg
-#   location = module.vm.location
-#   vm_id = module.vm.vm_id[1]
-# =======
-# module "blob_storage" {
-#   source = "../modules/Blobstorage"
-# }
+module "backup" {
+  source = "../modules/Backup"
+  rg = module.vm.rg
+  location = module.vm.location
+  vm_id = module.vm.vm_id[1]
+  disk_id = module.disks.disk_id
+}
 
-# module "image_capture" {
-#   source = "../modules/ImageCapture"
-#   resource_group_name = module.vm.rg
-#   location = module.vm.location
-#   vm_id = module.vm.vm_id[0]
-# >>>>>>> master
-# }
+module "blob_storage" {
+  source = "../modules/Blobstorage"
+}
+
+module "image_capture" {
+  source = "../modules/ImageCapture"
+  resource_group_name = module.vm.rg
+  location = module.vm.location
+  vm_id = module.vm.vm_id[0]
+}
