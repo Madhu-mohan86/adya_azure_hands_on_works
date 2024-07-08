@@ -34,6 +34,7 @@ module "backup" {
 
 module "blob_storage" {
   source = "../modules/Blobstorage"
+  path = "/home/madhu/index.html"
 }
 
 module "image_capture" {
@@ -41,4 +42,13 @@ module "image_capture" {
   resource_group_name = module.vm.rg
   location = module.vm.location
   vm_id = module.vm.vm_id[0]
+}
+
+module "scale" {
+  source = "../modules/Autoscale"
+}
+
+
+module "alerts" {
+  source = "../modules/Alerts"
 }
