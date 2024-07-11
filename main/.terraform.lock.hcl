@@ -19,6 +19,23 @@ provider "registry.opentofu.org/hashicorp/azurerm" {
   ]
 }
 
+provider "registry.opentofu.org/hashicorp/cloudinit" {
+  version = "2.3.4"
+  hashes = [
+    "h1:Y0kCXWjX7Oz9kwAKpYFXWRQVYFrOMvZYd/OkIUizLik=",
+    "zh:316777a45891cb7dd987673fc84e60190f7d416d437287413f97abb3a2374647",
+    "zh:31a9f544d7cee4f4241898540758dd4b7273b2f4468ac1821fdd2cf9c7f73295",
+    "zh:48c068b8cafdae710ca68485463e1c514cfd2dc1e7ed744a5e47421f97276574",
+    "zh:4e2e2bd03ceb53129535285b3699b2dfe6d433e5574329ab4845beb6af82a3ca",
+    "zh:50aa62cb46475e064a52f1c91012d219b05ac65091b7dfa83fa0cfe2ac16a431",
+    "zh:87d44fd608fd1c12311604d9941b7d3ecb004f682ee75ce8daf628e5e6e1f084",
+    "zh:a027e7b0c2146c0ee343829ba2e1f3cab39fc3e366dfc03906190e79f18fc001",
+    "zh:c92ed7e8119668e5b22916110025714ed967c0bcffcd6660655efb145de2d227",
+    "zh:c9d49cbaee106f53c4bb42086e959158aa4b1f9682c0ece79db741220bc06e1c",
+    "zh:e7ecc5c15d257fe320c2a62e2245b5f064e53f370d96ac3ee0ef48b62f16fcbe",
+  ]
+}
+
 provider "registry.opentofu.org/hashicorp/local" {
   version = "2.5.1"
   hashes = [

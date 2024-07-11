@@ -1,6 +1,6 @@
 module "vm" {
   source = "../modules/Virtualmachines"
-  private_or_public = true
+  private_or_public = false
 }
 
 module "load_balancer" {
